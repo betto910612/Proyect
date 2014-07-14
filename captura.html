@@ -8,6 +8,7 @@
 <link href="jquery.mobile.structure-1.4.3.min.css" type="text/css" rel="stylesheet">
 <script src="jquery-2.1.1.js" type="text/javascript"></script>
 <script src="jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 
 <!--_______________________________________________________________-->
 
@@ -165,19 +166,19 @@ function coordenadas(position) {
 <br>
 <input type="text" id="direccion" placeholder="'Direccion del Servicio'"/>
 <br> 
-<INPUT TYPE="text" NAME="txtAge" id="telefono" onblur="txtAge_onblur()" SIZE=5 MAXLENGTH=3 placeholder="'Numero de Teléfono'">
+<INPUT TYPE="text" NAME="txtAge" id="telefono" onblur="txtAge_onblur()" placeholder="'Numero de Teléfono'">
 <br>
 <input type="text" id="correo" placeholder="'Correo Electrónico'" />
 <br>
 <a href="javascript:obtener_localizacion();" id="coordenadas" data-role="button">Obtener Coordenadas </a>
 <br>
-<input type="text" id="lat" placeholder="'Latitud'" readonly="readonly"/>
+<input type="text" id="lat" placeholder="'Latitud'" readonly/>
 <br>
 <input type="text" id="long" placeholder="'Longitud'"readonly="readonly"/>
 <br>
 
 <button id='btn' ontouchend="capturePhoto()">Tomar foto</button>
-       
+       <div id="foto"></div>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
 </form>
