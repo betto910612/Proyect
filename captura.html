@@ -131,14 +131,7 @@ function txtAge_onblur() {
 </script>
 
 <!--_______________________________________________________________-->
-
-
-<title>Servicios Puebla</title>
-</head>
-
-<body>
-
-<!--_______________________________________________-->
+<!--_______________________________________________________________-->
 <script language="javascript">
 function obtener_localizacion() {
   navigator.geolocation.getCurrentPosition(coordenadas);
@@ -146,16 +139,48 @@ function obtener_localizacion() {
 function coordenadas(position) {
   var latitud = position.coords.latitude;
   var longitud = position.coords.longitude;
-  <!--alert('Tus coordenadas son: ('+latitud+','+longitud+')');-->
+ alert('Tus coordenadas son: ('+latitud+','+longitud+')');
   var la = $("#lat");
   la.val(latitud);
   var lo = $("#long");
   lo.val(longitud);
 }
+
+
+
+<!--______________________________________________________________-->
+var app = {
+    initialize: function() {
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+};
+
+
+
+function capturePhoto() {
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
+        destinationType: Camera.DestinationType.DATA_URL,
+        correctOrientation: true,
+        targetWidth: 1000,
+        targetHeight: 1000
+    });
+}
 </script>
-<!--____________________________________________________-->
 
 
+<!--________________________________________________________________-->
+
+<title>Servicios Puebla</title>
+</head>
+
+<body>
 
 <div data-role="page" id="externa">
 <div data-role="header" align="center" data-add-back-btn="true" data-theme="b"><p>Captura de Datos del Servicio</p>
@@ -172,13 +197,14 @@ function coordenadas(position) {
 <br>
 <a href="javascript:obtener_localizacion();" id="coordenadas" data-role="button">Obtener Coordenadas </a>
 <br>
-<input type="text" id="lat" placeholder="'Latitud'" readonly/>
+<input type="text" id="lat" placeholder="'Latitud'" readonly="readonly"/>
 <br>
 <input type="text" id="long" placeholder="'Longitud'"readonly="readonly"/>
 <br>
 
-<button id='btn' ontouchend="capturePhoto()">Tomar foto</button>
-       <div id="foto"></div>
+<!--<button id='btn' ontouchend="capturePhoto()">Tomar foto</button>-->
+<a href="#" id="foto" onClick="javascript:capturePhoto()" data-role="button">Tomar Foto</a>
+      
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
 </form>
@@ -191,7 +217,6 @@ function coordenadas(position) {
 </div>
 </div>
 <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
